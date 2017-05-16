@@ -8,4 +8,5 @@ package com.bawei.redchild;
  */
 
 public class Good {
+    //H
 }
