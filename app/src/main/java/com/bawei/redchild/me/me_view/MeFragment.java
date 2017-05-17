@@ -1,4 +1,7 @@
-package com.bawei.redchild.me;
+package com.bawei.redchild.me.me_view;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
@@ -26,6 +29,12 @@ public class MeFragment extends BaseFragment {
      */
     @Override
     protected void initView() {
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
     }
 }
