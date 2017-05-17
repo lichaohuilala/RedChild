@@ -11,7 +11,6 @@ public class HomeActivity extends BaseActivity {
     /**
      * 初始化 Layout布局
      *
-     * @return
      */
     @Override
     protected int attachLayoutRes() {
