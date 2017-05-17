@@ -26,6 +26,6 @@ public class ShoppingCartFragment extends BaseFragment {
      */
     @Override
     protected void initView() {
-
+//
     }
 }
