@@ -1,14 +1,12 @@
 package com.bawei.redchild;
 
+import android.content.Intent;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bawei.redchild.base.BaseActivity;
+import com.bawei.redchild.me.me_view.Login_act;
 
 public class HomeActivity extends BaseActivity{
 
@@ -46,7 +44,8 @@ public class HomeActivity extends BaseActivity{
                         Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.rb_home_me_show:
-                        Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(HomeActivity.this, Login_act.class);
+                        startActivity(intent);
                         break;
                     case R.id.rb_home_iv_show:
                         Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show();

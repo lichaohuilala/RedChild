@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.bawei.redchild.R;
@@ -80,6 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化 View控件
      */
     protected abstract void initView();
+
 
     /**
      * 添加 Fragment

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.bawei.redchild.HomeActivity">
 
+    <RelativeLayout
+        android:layout_above="@+id/rg_home_show"
+        android:id="@+id/rl_home_show_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
 
 
     <RadioGroup
