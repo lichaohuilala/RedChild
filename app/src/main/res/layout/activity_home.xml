@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bawei.redchild.HomeActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <RadioGroup
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rg_home_show"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rb_home_home_show"
+            style="@style/MainButtonStyle"
+            android:background="@drawable/tab_home"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/rb_home_classify_show"
+            style="@style/MainButtonStyle"
+            android:background="@drawable/tab_category"
+            />
+        <RadioButton
+            android:id="@+id/rb_home_iv_show"
+            style="@style/MainButtonStyle"
+            android:background="@mipmap/img_tab_groupbuy"
+            />
+        <RadioButton
+            android:id="@+id/rb_home_shoppingcart_show"
+            style="@style/MainButtonStyle"
+            android:background="@drawable/tab_shopping"
+            />
+        <RadioButton
+            android:id="@+id/rb_home_me_show"
+            style="@style/MainButtonStyle"
+            android:background="@drawable/tab_myebuy"
+            />
+    </RadioGroup>
+
+
+
+
+
+</RelativeLayout>

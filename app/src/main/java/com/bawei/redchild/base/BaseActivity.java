@@ -18,7 +18,7 @@ import com.bawei.redchild.R;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-    private final String TAG=this.getLocalClassName();
+    private final String TAG="BaseActivity";
 
 
     @Override
