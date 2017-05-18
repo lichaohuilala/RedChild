@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".me.me_view.Login_act">
+        <activity android:name=".me.me.Login_act">
         </activity>
     </application>
 
