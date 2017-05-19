@@ -42,12 +42,15 @@
 
     <Button
         android:layout_below="@+id/tv_frag_prepre_tv2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:textColor="#fff"
         android:id="@+id/btn_frag_prepre_affirm"
+        android:background="@mipmap/paysdk2_bg_virtual_ticket_restitution_coupon_name"
         android:text="马上去抢"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="35dp" />
 
 
 </RelativeLayout>

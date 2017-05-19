@@ -78,11 +78,13 @@
     <Button
         android:id="@+id/btn_frag_baby_affirm"
         android:text="确认"
+        android:textColor="#b4b4b4"
         android:layout_below="@+id/tv_frag_baby_girl_show"
+        android:background="@mipmap/paysdk2_bg_virtual_ticket_restitution_coupon_name_n"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="35dp" />
 
 
 

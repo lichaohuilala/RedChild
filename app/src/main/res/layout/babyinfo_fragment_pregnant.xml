@@ -31,12 +31,14 @@
 
     <Button
         android:id="@+id/btn_frag_pregnant_affirm"
+        android:textColor="#a6a6a6"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/iv_frag_pregnant_animator"
         android:layout_marginTop="50dp"
+        android:background="@mipmap/paysdk2_bg_virtual_ticket_restitution_coupon_name_n"
         android:text="确定"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="35dp" />
 
 
 
