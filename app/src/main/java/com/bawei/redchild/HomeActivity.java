@@ -1,5 +1,7 @@
 package com.bawei.redchild;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ public class HomeActivity extends BaseActivity{
     private GrouponFragment grouponFragment;
 
     private int tag;
+    private SharedPreferences babyInfo;
 
     /**
      * 初始化 Layout布局
@@ -41,6 +44,12 @@ public class HomeActivity extends BaseActivity{
      */
     @Override
     protected void initView() {
+        //标记 设置值
+        babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
+        if(babyInfo.getBoolean("isTag",true)) {
+            initTag();
+        }
+
         final RadioGroup rg= (RadioGroup) findViewById(R.id.rg_home_show);
 
         //加载默认 Fragment页面
@@ -98,7 +107,8 @@ public class HomeActivity extends BaseActivity{
                             }
                             HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,grouponFragment);
                             //提示
-                            Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show();
+                            babyInfo.edit().clear().commit();
+                            Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
                             break;
                     }
                 }
@@ -107,5 +117,52 @@ public class HomeActivity extends BaseActivity{
 
     }
 
+    private void initTag() {
+            Intent intent = getIntent();
+            //获取 其中传递过来的值
+            /**
+             * 获取 Intent传递过来的值
+             * 当前状态：state
+             *  0:我在备孕
+             *  1:我怀孕了
+             *  2:家有宝宝
+             *
+             *  备孕：
+             *   无字段
+             *  怀孕：
+             *   预产期：dueDate 20170519
+             *  宝宝：
+             *   出生日期：birthdate 20170519
+             *   性别：sex 男，女
+             *   名字：name
+             */
+
+            SharedPreferences.Editor edit = babyInfo.edit();
+            //判断用户当前状态
+            switch (intent.getIntExtra("state", -1)){
+                case 0:
+                    //我在备孕
+                    edit.putBoolean("isTag",false).putString("state","我在备孕").commit();
+                    break;
+                case 1:
+                    //我怀孕了
+                    edit.putBoolean("isTag",false)
+                            .putString("state","我怀孕了")
+                            .putString("duDate",intent.getStringExtra("duDate"))
+                            .commit();
+                    break;
+                case 2:
+                    //家有宝宝
+                    edit.putBoolean("isTag",false)
+                            .putString("state","家有宝宝")
+                            .putString("birthdate",intent.getStringExtra("birthdate"))
+                            .putString("sex",intent.getStringExtra("sex"))
+                            .putString("name",intent.getStringExtra("name"))
+                            .commit();
+                    break;
+                default:
+                    break;
+            }
+        }
 
 }

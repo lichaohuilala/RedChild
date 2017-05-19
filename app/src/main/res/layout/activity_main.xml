@@ -7,7 +7,7 @@
     tools:context="com.bawei.redchild.MainActivity">
 
     <ImageView
-        android:background="@mipmap/xyz"
+        android:background="@mipmap/nativ"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
