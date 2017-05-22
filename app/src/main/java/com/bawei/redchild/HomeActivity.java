@@ -11,7 +11,6 @@ import com.bawei.redchild.base.BaseActivity;
 import com.bawei.redchild.classify.ClassifyFragment;
 import com.bawei.redchild.groupon.GrouponFragment;
 import com.bawei.redchild.home.HomeFragment;
-import com.bawei.redchild.me.me.Login_act;
 import com.bawei.redchild.me.me.MeFragment;
 import com.bawei.redchild.shoppingCart.ShoppingCartFragment;
 
@@ -105,9 +104,12 @@ public class HomeActivity extends BaseActivity{
                             Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.rb_home_me_show:
-                            Intent intent = new Intent(HomeActivity.this, Login_act.class);
-                            startActivity(intent);
-                            rg.check(R.id.rb_home_home_show);
+                            if(meFragment==null){
+                                meFragment = new MeFragment();
+                            }
+                            HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
+                            //提示
+                            Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
                             break;
                     }
                 }
