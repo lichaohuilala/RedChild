@@ -42,7 +42,7 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_act);
         initView();
-        //程千浪11
+        //程千浪fff
     }
 
     private void initView() {
