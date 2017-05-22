@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tb_register"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证手机号"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:padding="5dp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        style="@style/login_name_tv"
+        android:text="手机号"
+        android:id="@+id/tv_phone_register"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tb_register"
+        android:layout_alignParentStart="true"/>
+    <EditText
+        style="@style/login_name_et"
+        android:hint="输入手机号码"
+        android:layout_alignTop="@+id/tv_phone_register"
+        android:layout_toEndOf="@+id/tv_phone_register"
+        android:id="@+id/et_phone_register"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_phone_register"
+        android:id="@+id/cb_agree_register"/>
+
+    <TextView
+        android:text="同意"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_alignBaseline="@+id/cb_agree_register"
+        android:layout_alignBottom="@+id/cb_agree_register"
+        android:layout_alignEnd="@+id/tv_phone_register"/>
+
+    <TextView
+        android:text="苏宁易购会员章程"
+        android:textColor="#EDA200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_suning_register"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"/>
+
+    <Button
+        android:text="下一步"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_suning_register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/but_next_register"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_loginbut"
+        />
+
+    <TextView
+        android:text="企业会员注册"
+        android:textColor="#EDA200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/but_next_register"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_company_register"/>
+
+    <TextView
+        android:text="和"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_and_register"
+        android:layout_alignBottom="@+id/tv_suning_register"
+        android:layout_toEndOf="@+id/tv_suning_register"/>
+
+    <TextView
+        android:text="易付宝协议"
+        android:textColor="#EDA200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_yfb_register"
+        android:layout_alignBottom="@+id/tv_and_register"
+        android:layout_toEndOf="@+id/tv_and_register"/>
+</RelativeLayout>
