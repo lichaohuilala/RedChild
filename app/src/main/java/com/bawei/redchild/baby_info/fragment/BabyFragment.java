@@ -23,6 +23,7 @@ public class BabyFragment extends BaseFragment implements View.OnClickListener{
     private ImageView boy_animator,girl_animator;
     private ImageView boy_checked,girl_checked;
     private RotateAnimation boy_rotate,girl_rotate;
+    private int tag=0;
 
     /**
      * 绑定布局文件
@@ -74,6 +75,7 @@ public class BabyFragment extends BaseFragment implements View.OnClickListener{
         boy_rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         boy_rotate.setDuration(4000);
         boy_rotate.setRepeatCount(-1);
+
         girl_rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         girl_rotate.setDuration(4000);
         girl_rotate.setRepeatCount(-1);
@@ -84,9 +86,8 @@ public class BabyFragment extends BaseFragment implements View.OnClickListener{
      */
     private void addBoyAnimator() {
 
-        //取消动画
-        girl_rotate.cancel();
-        girl_rotate.reset();
+        //清除动画
+        girl_animator.clearAnimation();
 
         //开始旋转动画
         boy_animator.startAnimation(boy_rotate);
@@ -94,14 +95,20 @@ public class BabyFragment extends BaseFragment implements View.OnClickListener{
 
     private void addGirlAnimator() {
 
-        //取消动画
-        boy_rotate.cancel();
-        boy_rotate.reset();
+        //清除动画
+        boy_animator.clearAnimation();
 
         //开始旋转动画
         girl_animator.startAnimation(girl_rotate);
     }
 
+
+    public void addAinimation(ImageView imageView){
+        RotateAnimation rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setDuration(4000);
+        rotateAnimation.setRepeatCount(-1);
+        imageView.startAnimation(rotateAnimation);
+    }
 
 
     /**
@@ -111,41 +118,50 @@ public class BabyFragment extends BaseFragment implements View.OnClickListener{
      */
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iv_frag_baby_boy:
 
-                //显示 男孩
-                boy_animator.setVisibility(View.VISIBLE);
-                boy_checked.setVisibility(View.VISIBLE);
-                //隐藏 女孩
-                girl_animator.setVisibility(View.INVISIBLE);
-                girl_checked.setVisibility(View.INVISIBLE);
+        //弊屏多次触控
+        if(v.getId()!=tag){
 
-                addBoyAnimator();
-                break;
-            case R.id.iv_frag_baby_girl:
+            switch (v.getId()){
+                case R.id.iv_frag_baby_boy:
+                    tag=R.id.iv_frag_baby_boy;
+                    //显示 男孩
+                    boy_animator.setVisibility(View.VISIBLE);
+                    boy_checked.setVisibility(View.VISIBLE);
+                    //隐藏 女孩
+                    girl_animator.setVisibility(View.INVISIBLE);
+                    girl_checked.setVisibility(View.INVISIBLE);
 
-                //显示 女孩
-                girl_animator.setVisibility(View.VISIBLE);
-                girl_checked.setVisibility(View.VISIBLE);
-                //隐藏 男孩
-                boy_animator.setVisibility(View.INVISIBLE);
-                boy_checked.setVisibility(View.INVISIBLE);
+                    addBoyAnimator();
+//                addAinimation(boy_animator);
+                    break;
+                case R.id.iv_frag_baby_girl:
+                    tag=R.id.iv_frag_baby_girl;
+                    //显示 女孩
+                    girl_animator.setVisibility(View.VISIBLE);
+                    girl_checked.setVisibility(View.VISIBLE);
+                    //隐藏 男孩
+                    boy_animator.setVisibility(View.INVISIBLE);
+                    boy_checked.setVisibility(View.INVISIBLE);
 
-                addGirlAnimator();
-                break;
-            case R.id.btn_frag_baby_affirm:
-                //跳转到主页面
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
+//                addAinimation(girl_animator);
+                    addGirlAnimator();
+                    break;
+                case R.id.btn_frag_baby_affirm:
+                    tag=R.id.btn_frag_baby_affirm;
+                    //跳转到主页面
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
 
-                intent.putExtra("state",2);
-                intent.putExtra("birthdate","20170519");
-                intent.putExtra("sex","男");
-                intent.putExtra("name","刘宏亮");
+                    intent.putExtra("state",2);
+                    intent.putExtra("birthdate","20170519");
+                    intent.putExtra("sex","男");
+                    intent.putExtra("name","刘宏亮");
 
-                startActivity(intent);
-                getActivity().finish();
-                break;
+                    startActivity(intent);
+                    getActivity().finish();
+                    break;
+            }
+
         }
     }
 }

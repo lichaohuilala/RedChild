@@ -52,6 +52,22 @@ public class HomeActivity extends BaseActivity{
 
         final RadioGroup rg= (RadioGroup) findViewById(R.id.rg_home_show);
 
+        findViewById(R.id.iv_home_groupon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //既然 图片被点击了  那么就将radiogroup设置为null的那个
+                rg.check(R.id.rb_home_groupon_show);
+
+                if(grouponFragment==null){
+                    grouponFragment = new GrouponFragment();
+                }
+                HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,grouponFragment);
+                //提示
+                babyInfo.edit().clear().commit();
+                Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         //加载默认 Fragment页面
         homeFragment = new HomeFragment();
         HomeActivity.super.addFragment(R.id.rl_home_show_fragment, homeFragment);
@@ -62,12 +78,10 @@ public class HomeActivity extends BaseActivity{
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 //为了防止重复点击
-
                 //如果标记不等于被选中值，则进行页面改变
                 if(tag!=checkedId){
                     //标记被改变值
                     tag=checkedId;
-
                     switch (checkedId){
                         case R.id.rb_home_home_show:
                             if(homeFragment==null){
@@ -100,15 +114,6 @@ public class HomeActivity extends BaseActivity{
                             HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
                             //提示
                             Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
-                            break;
-                        case R.id.rb_home_iv_show:
-                            if(grouponFragment==null){
-                                grouponFragment = new GrouponFragment();
-                            }
-                            HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,grouponFragment);
-                            //提示
-                            babyInfo.edit().clear().commit();
-                            Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
                             break;
                     }
                 }
