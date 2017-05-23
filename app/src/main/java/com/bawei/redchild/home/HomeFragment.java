@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.fragment_home, container, false);
         vp_homef1_hua_viewp = (ViewPager) inflate.findViewById(R.id.vp_homef1_hua_viewp);
         tb_homef1_biaot_tabl = (TabLayout) inflate.findViewById(R.id.tb_homef1_biaot_tabl);
-
+   Toast.makeText(getActivity(),"走此方法了",Toast.LENGTH_SHORT).show();
        initview();
         return inflate;
 
