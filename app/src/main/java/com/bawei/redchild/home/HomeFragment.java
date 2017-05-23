@@ -29,7 +29,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private ViewPager vp_homef1_hua_viewp;
     private TabLayout tb_homef1_biaot_tabl;
-    List<String> mList = new ArrayList<>();
+
 
     @Nullable
     @Override

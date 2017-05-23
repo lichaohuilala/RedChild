@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">红孩儿</string>
+    <string name="homesearchbarhint">商品/店铺</string>
 </resources>

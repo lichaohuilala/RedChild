@@ -152,5 +152,7 @@
     <color name="navy">#000080</color> <!--海军色 -->
     <color name="black">#000000</color> <!--黑色 -->
     <color name="huang">#EDA200</color>
-
+    <color name="add_cart_disabled_text_color">#ff909090</color>
+    <color name="color_gray_999999">#ff999999</color>
+    <color name="color_white_f7f7f7">#fff7f7f7</color>
 </resources>
