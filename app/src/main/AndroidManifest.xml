@@ -23,6 +23,8 @@
         <activity android:name=".baby_info.BabyInfoActivity"/>
         <activity android:name=".me.me.Register_act">
         </activity>
+        <activity android:name=".shoppingCart.Main2Activity">
+        </activity>
     </application>
 
 </manifest>
