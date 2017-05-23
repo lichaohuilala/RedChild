@@ -35,5 +35,4 @@ dependencies {
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'com.orhanobut:logger:1.15'
     testCompile 'junit:junit:4.12'
-    compile project(':simplezxing')
 }

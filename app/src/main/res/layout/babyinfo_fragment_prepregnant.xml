@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/iv_frag_prepre_icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:background="@mipmap/guide_gather_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -11,6 +11,7 @@ import com.bawei.redchild.base.BaseActivity;
 import com.bawei.redchild.classify.ClassifyFragment;
 import com.bawei.redchild.groupon.GrouponFragment;
 import com.bawei.redchild.home.HomeFragment;
+import com.bawei.redchild.me.me.Login_act;
 import com.bawei.redchild.me.me.MeFragment;
 import com.bawei.redchild.shoppingCart.ShoppingCartFragment;
 
@@ -22,9 +23,24 @@ public class HomeActivity extends BaseActivity{
     private ShoppingCartFragment shoppingCartFragment;
     private MeFragment meFragment;
     private GrouponFragment grouponFragment;
+    private final int REQUEST_CODE=100;
+    private boolean isLogin=false;
 
     private int tag;
     private SharedPreferences babyInfo;
+    private RadioGroup rg;
+
+    /**
+     * 获取焦点
+     * 判断 用户是否登录 两个来源
+     *  1. 用户登录后保存在shared中
+     *  2. shared中
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isLogin = babyInfo.getBoolean("isLogin", false);
+    }
 
     /**
      * 初始化 Layout布局
@@ -43,10 +59,13 @@ public class HomeActivity extends BaseActivity{
         //标记 设置值
         babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
         if(babyInfo.getBoolean("isTag",true)) {
+            /**
+             * 首次弹出 PopWindonws 红包
+             */
             initTag();
         }
 
-        final RadioGroup rg= (RadioGroup) findViewById(R.id.rg_home_show);
+        rg = (RadioGroup) findViewById(R.id.rg_home_show);
 
         findViewById(R.id.iv_home_groupon).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +87,7 @@ public class HomeActivity extends BaseActivity{
         homeFragment = new HomeFragment();
         HomeActivity.super.addFragment(R.id.rl_home_show_fragment, homeFragment);
         //标记 当前被选中
-        tag=rg.getCheckedRadioButtonId();
+        tag= rg.getCheckedRadioButtonId();
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -104,12 +123,17 @@ public class HomeActivity extends BaseActivity{
                             Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.rb_home_me_show:
-                            if(meFragment==null){
-                                meFragment = new MeFragment();
+                            //判断 用户是否登录
+                            if(isLogin){
+                                if(meFragment==null){
+                                    meFragment = new MeFragment();
+                                }
+                                HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
+                                //提示
+                                Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
+                            }else{
+                                startActivityForResult(new Intent(HomeActivity.this,Login_act.class),REQUEST_CODE);
                             }
-                            HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
-                            //提示
-                            Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
                             break;
                     }
                 }
@@ -120,40 +144,39 @@ public class HomeActivity extends BaseActivity{
 
     private void initTag() {
             Intent intent = getIntent();
-            //获取 其中传递过来的值
-            /**
-             * 获取 Intent传递过来的值
-             * 当前状态：state
-             *  0:我在备孕
-             *  1:我怀孕了
-             *  2:家有宝宝
-             *
-             *  备孕：
-             *   无字段
-             *  怀孕：
-             *   预产期：dueDate 20170519
-             *  宝宝：
-             *   出生日期：birthdate 20170519
-             *   性别：sex 男，女
-             *   名字：name
-             */
-
             SharedPreferences.Editor edit = babyInfo.edit();
             //判断用户当前状态
             switch (intent.getIntExtra("state", -1)){
                 case 0:
-                    //我在备孕
+                    /**
+                     * 当前状态：state
+                     * 0:我在备孕
+                     *  备孕：
+                     *   无字段
+                     */
                     edit.putBoolean("isTag",false).putString("state","我在备孕").commit();
                     break;
                 case 1:
-                    //我怀孕了
+                    /**
+                     * 当前状态：state
+                     * 1:我怀孕了
+                     * 怀孕：
+                     *   预产期：dueDate 20170519
+                     */
                     edit.putBoolean("isTag",false)
                             .putString("state","我怀孕了")
                             .putString("duDate",intent.getStringExtra("duDate"))
                             .commit();
                     break;
                 case 2:
-                    //家有宝宝
+                    /**
+                     * 当前状态：state
+                     * 2:家有宝宝
+                     * 宝宝：
+                     *   出生日期：birthdate 20170519
+                     *   性别：sex 男，女
+                     *   名字：name
+                     */
                     edit.putBoolean("isTag",false)
                             .putString("state","家有宝宝")
                             .putString("birthdate",intent.getStringExtra("birthdate"))
@@ -161,9 +184,20 @@ public class HomeActivity extends BaseActivity{
                             .putString("name",intent.getStringExtra("name"))
                             .commit();
                     break;
-                default:
-                    break;
             }
         }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_CODE){
+            //如果 比对成功代表 是登录页面 判断当前的值
+            isLogin = babyInfo.getBoolean("isLogin", false);
+            if(isLogin){
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            }else {
+                rg.check(R.id.rb_home_home_show);
+            }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.bawei.redchild.me.me;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +37,7 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     private TextView tv_xllogin_login;
     private TextView tv_otherlogin_login;
     private ImageButton ib_qqlog_login;
+    private SharedPreferences babyInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     }
 
     private void initView() {
+
+        babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
+
         tb_login = (Toolbar) findViewById(R.id.tb_login);
         tb_login.setNavigationIcon(R.mipmap.btn_back);
         tb_login.setNavigationOnClickListener(new View.OnClickListener() {
@@ -124,7 +129,8 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.but_login_login:
-
+                babyInfo.edit().putBoolean("isLogin",true).commit();
+                finish();
                 break;
             case R.id.but_register_login:
                 Intent intent = new Intent(Login_act.this, Register_act.class);
