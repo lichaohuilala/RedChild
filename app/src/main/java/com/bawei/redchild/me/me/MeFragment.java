@@ -21,7 +21,7 @@ public class MeFragment extends BaseFragment {
      */
     @Override
     protected int attachLayoutRes() {
-        return R.layout.fragment_me;
+        return R.layout.fragment_loginsuccess;
     }
 
     /**
