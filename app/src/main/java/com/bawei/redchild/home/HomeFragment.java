@@ -62,11 +62,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onResponse(String response) {
-              Toast.makeText(getActivity(),"数据为："+response,Toast.LENGTH_SHORT).show();
+
                 Home_frag1_bean home_frag1_bean = Gsons.GetGsonfrom(response, Home_frag1_bean.class);
                 List<Home_frag1_bean.DataBean> data = home_frag1_bean.getData();
                 List<Home_frag1_bean.DataBean.TagBean> tag = data.get(0).getTag();
-                Toast.makeText(getActivity(),""+tag.toString(),Toast.LENGTH_SHORT).show();
                 H_frag_base h_frag_base = new H_frag_base(getChildFragmentManager(), tag);
                 vp_homef1_hua_viewp.setAdapter(h_frag_base);
                 tb_homef1_biaot_tabl.setupWithViewPager(vp_homef1_hua_viewp);

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        xmlns:tools="http://schemas.android.com/tools"
         android:name=".RedChildApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon_info"
