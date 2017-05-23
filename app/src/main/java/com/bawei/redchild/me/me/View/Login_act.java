@@ -1,4 +1,4 @@
-package com.bawei.redchild.me.me;
+package com.bawei.redchild.me.me.View;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,15 +9,23 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.me.me.Utils.SlideSwitch;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareConfig;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import java.util.Map;
 
 public class Login_act extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,12 +46,39 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     private TextView tv_otherlogin_login;
     private ImageButton ib_qqlog_login;
     private SharedPreferences babyInfo;
+    private UMAuthListener mListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_act);
         initView();
+        shezhi();
+        mListener = new UMAuthListener() {
+            @Override
+            public void onStart(SHARE_MEDIA share_media) {
+
+            }
+
+            @Override
+            public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                Toast.makeText(getApplicationContext(), "授权成功", Toast.LENGTH_SHORT).show();
+                String name = map.get("name");
+                String iconurl = map.get("iconurl");
+                Log.e("zzz",name+iconurl);
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA share_media, int i) {
+
+            }
+        };
     }
 
     private void initView() {
@@ -136,10 +171,10 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent);
                 break;
             case R.id.iv_xllogin_login:
-
+                UMShareAPI.get(Login_act.this).getPlatformInfo(Login_act.this,SHARE_MEDIA.SINA ,mListener);
                 break;
             case R.id.ib_qqlog_login:
-
+                UMShareAPI.get(Login_act.this).getPlatformInfo(Login_act.this,SHARE_MEDIA.QQ ,mListener);
                 break;
             case R.id.tv_forgetpass_login:
                 break;
@@ -150,5 +185,21 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
                 et_pass_login.setText("");
                 break;
         }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+    private void shezhi(){
+        UMShareConfig config = new UMShareConfig();
+        config.isNeedAuthOnGetUserInfo(true);
+        config.isOpenShareEditActivity(true);
+        config.setSinaAuthType(UMShareConfig.AUTH_TYPE_SSO);
+        config.setFacebookAuthType(UMShareConfig.AUTH_TYPE_SSO);
+        config.setShareToLinkedInFriendScope(UMShareConfig.LINKED_IN_FRIEND_SCOPE_ANYONE);
+        UMShareAPI.get(this).setShareConfig(config);
     }
 }

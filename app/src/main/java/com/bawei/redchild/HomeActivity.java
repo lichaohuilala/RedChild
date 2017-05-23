@@ -11,8 +11,8 @@ import com.bawei.redchild.base.BaseActivity;
 import com.bawei.redchild.classify.ClassifyFragment;
 import com.bawei.redchild.groupon.GrouponFragment;
 import com.bawei.redchild.home.HomeFragment;
-import com.bawei.redchild.me.me.Login_act;
-import com.bawei.redchild.me.me.MeFragment;
+import com.bawei.redchild.me.me.View.Login_act;
+import com.bawei.redchild.me.me.View.MeFragment;
 import com.bawei.redchild.shoppingCart.ShoppingCartFragment;
 
 public class HomeActivity extends BaseActivity{

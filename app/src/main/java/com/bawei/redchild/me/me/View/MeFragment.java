@@ -1,4 +1,4 @@
-package com.bawei.redchild.me.me;
+package com.bawei.redchild.me.me.View;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
