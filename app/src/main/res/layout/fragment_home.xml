@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<LinearLayout
+    android:id="@+id/line_hf1_tile"
+  style="@style/h_f1_line"
+    android:layout_weight="1"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/search_head_view02"
+                  android:layout_width="fill_parent"
+                  android:layout_height="@dimen/ios_public_space_88px"
+                  android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/category_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/android_public_space_5px"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/home_title_btn_barcode"
+                style="@style/h_f1_imgview"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="6.0dip"
+                android:onClick="saoma"
+                android:src="@mipmap/icon_scan_top" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/home_btn_search_layout"
+            android:layout_width="0.0dip"
+            android:layout_height="@dimen/ios_public_space_60px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/android_public_space_5px"
+            android:layout_marginRight="@dimen/android_public_space_5px"
+            android:layout_weight="1.0"
+            android:background="@drawable/et_search_top_bg">
+
+            <ImageView
+                android:id="@+id/home_search_title_logo"
+               style="@style/h_f1_imgview"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_search_home" />
+
+            <TextView
+                android:id="@+id/text_hint02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5.0dip"
+                android:layout_toRightOf="@id/home_search_title_logo"
+                android:hint="@string/homesearchbarhint"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/add_cart_disabled_text_color"
+                android:textColorHint="@color/color_gray_999999"
+                android:textSize="13.0sp" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/message_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/android_public_space_5px"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/h_f1_imgview"
+                android:layout_gravity="center_horizontal"
+                android:padding="6.0dip"
+                android:src="@mipmap/icon_mes_top" />
+
+            <ImageView
+                android:id="@+id/msg_unread_count_tv"
+                style="@style/h_f1_imgview"
+                android:layout_gravity="right"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:src="@mipmap/msg_center_unread_red_circle"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
+
+<android.support.design.widget.TabLayout
+    android:id="@+id/tb_homef1_biaot_tabl"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    app:tabIndicatorColor="#FF0000"
+    app:tabSelectedTextColor="#FF0000"
+    app:tabTextColor="#FF000000"
+
+    app:tabMode="scrollable"
+    app:tabGravity="center"
+    >
+
+</android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_homef1_hua_viewp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        ></android.support.v4.view.ViewPager>
 
 </LinearLayout>
