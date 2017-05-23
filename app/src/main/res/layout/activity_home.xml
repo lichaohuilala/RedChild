@@ -20,6 +20,7 @@
         android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RadioButton
             android:id="@+id/rb_home_home_show"
             style="@style/MainButtonStyle"
@@ -32,9 +33,9 @@
             android:background="@drawable/tab_category"
             />
         <RadioButton
-            android:id="@+id/rb_home_iv_show"
+            android:id="@+id/rb_home_groupon_show"
             style="@style/MainButtonStyle"
-            android:background="@mipmap/img_tab_groupbuy"
+            android:background="@mipmap/tab_myebuy_pressed"
             />
         <RadioButton
             android:id="@+id/rb_home_shoppingcart_show"
@@ -48,7 +49,13 @@
             />
     </RadioGroup>
 
-
+<ImageView
+    android:id="@+id/iv_home_groupon"
+    android:background="@mipmap/img_tab_groupbuy"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
 
 
