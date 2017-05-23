@@ -22,6 +22,8 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".me.me_view.Login_act">
         </activity>
+        <activity android:name=".shoppingCart.Main2Activity">
+        </activity>
     </application>
 
 </manifest>
