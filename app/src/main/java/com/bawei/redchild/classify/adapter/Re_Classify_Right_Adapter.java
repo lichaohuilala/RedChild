@@ -19,13 +19,16 @@ import java.util.List;
 public class Re_Classify_Right_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      private  List<Classify.RsBean.ChildrenBeanX> children;
     private Context context;
+    int  aa ;
     private ViewHolder viewHolder;
     private final List<Classify.RsBean.ChildrenBeanX.ChildrenBean> children1;
-    public Re_Classify_Right_Adapter(Context context, List<Classify.RsBean.ChildrenBeanX> children) {
+    public Re_Classify_Right_Adapter(Context context, List<Classify.RsBean.ChildrenBeanX> children,int aa) {
         this.context = context;
-        Classify.RsBean.ChildrenBeanX childrenBeanX = children.get(0);
+        Classify.RsBean.ChildrenBeanX childrenBeanX = children.get(aa);
         children1 = childrenBeanX.getChildren();
         this.children = children;
+        this.aa=aa;
+
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,7 +40,7 @@ public class Re_Classify_Right_Adapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Glide.with( context);// 绑定Context
+        Glide.with( context);// 绑定Context22
         Glide.with(context).load(children1.get(position).getImgApp()).into(viewHolder.im_classify_item_right);
         viewHolder.tv_classify_item_right.setText(children1.get(position).getDirName());
     }
