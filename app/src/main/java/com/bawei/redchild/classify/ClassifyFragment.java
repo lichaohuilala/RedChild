@@ -61,7 +61,7 @@ public class ClassifyFragment extends BaseFragment {
         return R.layout.fragment_classify;
     }
     /**
-     * 初始化 view控件
+     * 初始化 view控件22
      */
     @Override
     protected void initView() {
