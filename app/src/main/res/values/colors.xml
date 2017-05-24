@@ -4,8 +4,14 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-
+    <color name="search_color_black_text">#ff333333</color>
+    <color name="pub_color_ten">#ffcacaca</color>
     <color name="white">#FFFFFF</color> <!--白色 -->
+
+
+
+
+
     <color name="ivory">#FFFFF0</color> <!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color> <!--亮黄色 -->
     <color name="yellow">#FFFF00</color> <!--黄色 -->
@@ -155,4 +161,21 @@
     <color name="add_cart_disabled_text_color">#ff909090</color>
     <color name="color_gray_999999">#ff999999</color>
     <color name="color_white_f7f7f7">#fff7f7f7</color>
+
+    <color name="default_text">#ff454545</color>
+    <color name="subscribe_item_drag_stroke">#ffd2d2d2</color>
+    <color name="subscribe_item_drag_bg">#fff5f5f5</color>
+    <color name="subscribe_item_selected_bg">#ffffffff</color>
+    <color name="subscribe_item_selected_stroke">#ffcc3131</color>
+    <color name="subscribe_item_disabled_bg">#ffefefef</color>
+    <color name="subscribe_item_disabled_stroke">#ffd9d9d9</color>
+    <color name="subscribe_item_pressed_bg">#fff9f9f9</color>
+    <color name="subscribe_item_pressed_stroke">#ffcdcdcd</color>
+    <color name="subscribe_item_normal_bg">#fff5f5f5</color>
+    <color name="subscribe_item_normal_stroke">#ffcdcdcd</color>
+    <item name="subscribe_item_text_color_normal" type="color">@color/default_text</item>
+    <color name="subscribe_item_text_color_pressed">#ffb9b9b9</color>
+    <color name="back_class">#EEEEEE</color>
+    <color name="default_text_night">#ff747474</color>
+    <item name="subscribe_item_text_color_normal_night" type="color">@color/default_text_night</item>
 </resources>

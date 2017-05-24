@@ -2,8 +2,14 @@ package com.bawei.redchild;
 
 import android.app.Application;
 
+
+import com.iflytek.cloud.SpeechUtility;
+
+
+import com.bawei.redchild.me.me.Utils.Utils;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
+
 
 /**
  * Effect : Application 程序入口
@@ -20,6 +26,12 @@ public class RedChildApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        SpeechUtility.createUtility(this, "appid=" + getString(R.string.app_id));
+
+
         UMShareAPI.get(this);
+        Utils.init(getApplicationContext());
+
     }
 }

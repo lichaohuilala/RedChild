@@ -35,6 +35,11 @@ dependencies {
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'com.orhanobut:logger:1.15'
     testCompile 'junit:junit:4.12'
+
+    compile project(':simplezxing')
+    compile files('src/main/jniLibs/Msc.jar')
+    compile files('src/main/jniLibs/Sunflower.jar')
+
     compile files('libs/SocialSDK_QQ_Simplify.jar')
     compile files('libs/umeng_social_api.jar')
     compile files('libs/umeng_social_net.jar')
@@ -42,4 +47,5 @@ dependencies {
     compile files('libs/SocialSDK_Sina_Simplify.jar')
     compile files('libs/umeng_social_shareview.jar')
     compile 'jp.wasabeef:glide-transformations:2.0.0'
+
 }

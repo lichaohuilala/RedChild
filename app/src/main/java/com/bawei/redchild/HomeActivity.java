@@ -2,6 +2,7 @@ package com.bawei.redchild;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -198,6 +199,18 @@ public class HomeActivity extends BaseActivity{
             }else {
                 rg.check(R.id.rb_home_home_show);
             }
+        }
+        if (resultCode==100){
+            String name = data.getStringExtra("name");
+            String iconurl = data.getStringExtra("iconurl");
+            Bundle bundle = new Bundle();
+            bundle.putString("name",name);
+            bundle.putString("iconurl",iconurl);
+            if(meFragment==null){
+                meFragment = new MeFragment();
+            }
+            meFragment.setArguments(bundle);
+            rg.check(R.id.rb_home_me_show);
         }
     }
 }

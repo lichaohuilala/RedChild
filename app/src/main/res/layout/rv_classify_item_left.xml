@@ -5,7 +5,6 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -13,7 +12,10 @@
             android:padding="5dp"
             android:layout_centerHorizontal="true"
             android:text="@string/app_name"
-            android:textSize="25sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/add_cart_disabled_text_color"
+            android:textSize="15sp"
             android:id="@+id/classif_item_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

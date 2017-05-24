@@ -6,8 +6,9 @@
 
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:padding="5dp"
         android:src="@mipmap/btn_back"
         android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/img_tab_groupbuy"
@@ -17,7 +18,7 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_below="@id/im_classify_item_right"
         android:layout_centerHorizontal="true"
         android:id="@+id/tv_classify_item_right"

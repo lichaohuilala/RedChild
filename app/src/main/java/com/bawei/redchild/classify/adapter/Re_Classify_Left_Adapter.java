@@ -2,7 +2,6 @@ package com.bawei.redchild.classify.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,12 +62,10 @@ public class Re_Classify_Left_Adapter   extends RecyclerView.Adapter<Re_Classify
         @Override
         public void onClick(View v) {
             if (mListener!=null){
-                            Log.d("zzz",getPosition()+"");
                 mListener.onItemClick(view ,getPosition());
             }
         }
     }
-
     public interface MyItemClickListener {
         void onItemClick(View view, int position);
     }

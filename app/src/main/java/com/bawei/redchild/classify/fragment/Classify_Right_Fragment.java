@@ -1,12 +1,15 @@
 package com.bawei.redchild.classify.fragment;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
-import com.bawei.redchild.classify.adapter.Re_Classify_Right_Adapter;
+import com.bawei.redchild.classify.adapter.Re_Classify_Right_Adapter2;
 import com.bawei.redchild.classify.dao.Classify;
+import com.bawei.redchild.classify.dao.DividerGridItemDecoration;
+
 import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
@@ -20,9 +23,7 @@ public class Classify_Right_Fragment extends BaseFragment {
     public Classify_Right_Fragment(Classify.RsBean rsBean) {
         this.rsBean = rsBean;
         children = rsBean.getChildren();
-
     }
-
 
     /**
      * 绑定布局文件
@@ -39,11 +40,14 @@ public class Classify_Right_Fragment extends BaseFragment {
      */
     @Override
     protected void initView() {
-     mRv_classify_right = (RecyclerView) getView().findViewById(R.id.rv_right_fragment);
-        Re_Classify_Right_Adapter adapter = new Re_Classify_Right_Adapter(getActivity(), children);
-        mRv_classify_right.setAdapter(adapter);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-        mRv_classify_right.setLayoutManager( gridLayoutManager);
+        mRv_classify_right = (RecyclerView) getView().findViewById(R.id.rv_right_fragment);
+        Re_Classify_Right_Adapter2 adapter2 = new Re_Classify_Right_Adapter2(getActivity(), children);
+        mRv_classify_right.setAdapter(adapter2);
+
+        mRv_classify_right.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // 设置动画
+//        mRv_classify_right.setItemAnimator( new DefaultItemAnimator());
 
     }
 }

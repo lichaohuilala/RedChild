@@ -11,12 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
 import com.bawei.redchild.classify.adapter.Re_Classify_Left_Adapter;
 import com.bawei.redchild.classify.dao.Classify;
+import com.bawei.redchild.classify.dao.DividerGridItemDecoration;
 import com.bawei.redchild.classify.dao.Url;
 import com.bawei.redchild.classify.fragment.Classify_Right_Fragment;
 import com.google.gson.Gson;
@@ -37,7 +37,7 @@ public class ClassifyFragment extends BaseFragment {
     private Classify classify;
     private RecyclerView mRv_classify_left;
     private Re_Classify_Left_Adapter mleft_adapter;
-    int oldposition =0;
+    int oldposition =2;
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -49,11 +49,9 @@ public class ClassifyFragment extends BaseFragment {
             }
         }
     };
-
     private List<Classify.RsBean> rs;
     private Classify.RsBean rsBean;
-
-
+    private  int position=0;
     /**
      * 绑定布局文件
      * @return 布局文件ID
@@ -63,7 +61,7 @@ public class ClassifyFragment extends BaseFragment {
         return R.layout.fragment_classify;
     }
     /**
-     * 初始化 view控件
+     * 初始化 view控件22
      */
     @Override
     protected void initView() {
@@ -75,34 +73,35 @@ public class ClassifyFragment extends BaseFragment {
         //2.设置布局管理器,参数  LinearLayoutManager
         mRv_classify_left.setLayoutManager(layoutMgr);
     }
-
     private void init() {
         rs = classify.getRs();
         mleft_adapter = new Re_Classify_Left_Adapter(getActivity(), rs);
         mRv_classify_left.setAdapter(mleft_adapter);
+        // 添加分隔线
+        mRv_classify_left.addItemDecoration( new DividerGridItemDecoration(getActivity()));
         mleft_adapter.setItemClickListener(new Re_Classify_Left_Adapter.MyItemClickListener() {
+
+            private View childAt;
+
             @Override
             public void onItemClick(View view, int position) {
                 // 获取 资源文件里的颜色
                 int color = getResources().getColor(R.color.gainsboro);
                 int color1 = getResources().getColor(R.color.white);
-                Toast.makeText(getActivity(),""+position,Toast.LENGTH_SHORT).show();
+                    if (position==oldposition){
+                        return;
+                    }
 
-                if (position==oldposition){
-                    return;
-                }
+
                 Classify.RsBean rsBean = rs.get(position);
                 setfragment(new Classify_Right_Fragment(rsBean));
-
-                if (ClassifyFragment.this.rsBean !=null){
-                    ClassifyFragment.this.rsBean =null;
-                }
 
                 ClassifyFragment.this.rsBean = rs.get(position);
                 view.setBackgroundColor(color);
                 // 从管理器上获取   不同的view
-                View childAt = layoutMgr.getChildAt(oldposition);
-                childAt.setBackgroundColor(color1);
+
+                    childAt = layoutMgr.getChildAt(oldposition);
+                    childAt.setBackgroundColor(color1);
 
                 LinearLayout layout = (LinearLayout)view;		//获取布局中任意控件对象
                 TextView status = (TextView) layout.findViewById(R.id.classif_item_text);
@@ -110,11 +109,15 @@ public class ClassifyFragment extends BaseFragment {
 
                 LinearLayout layout1 = (LinearLayout)childAt;		//获取布局中任意控件对象
                 TextView status1 = (TextView) layout1.findViewById(R.id.classif_item_text);
-                status1.setTextColor(Color.BLACK);
+
+                int color3 = getResources().getColor(R.color.add_cart_disabled_text_color);
+                status1.setTextColor(color3);
                 oldposition=position;
             }
         });
         //---------------右边的Recycle view
+        Classify.RsBean rsBean = rs.get(position);
+        setfragment(new Classify_Right_Fragment(rsBean));
 
 
 
