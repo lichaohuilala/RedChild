@@ -130,8 +130,7 @@ public class HomeActivity extends BaseActivity{
                                     meFragment = new MeFragment();
                                 }
                                 HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
-                                //提示
-                                Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
+
                             }else{
                                 startActivityForResult(new Intent(HomeActivity.this,Login_act.class),REQUEST_CODE);
                             }

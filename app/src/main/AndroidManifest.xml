@@ -70,6 +70,8 @@
         </activity>
         <activity android:name=".me.me.View.SetPassWord_act">
         </activity>
+        <activity android:name=".me.me.View.Success_act">
+        </activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bawei.redchild.HomeActivity;
 import com.bawei.redchild.R;
 import com.bawei.redchild.me.me.Utils.SlideSwitch;
 import com.umeng.socialize.UMAuthListener;
@@ -97,6 +98,8 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
         tb_login.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Login_act.this, HomeActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
