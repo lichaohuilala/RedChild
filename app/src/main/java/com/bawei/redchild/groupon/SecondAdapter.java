@@ -61,7 +61,7 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.ViewHolder
             Glide.with(mContext).load(bean2.getImgUrl()).into(mIv_item3);
             mTv_item3_name.setText(bean2.getItemName());
             mTv_item3_desc.setText(bean2.getItemDesc());
-            mTv_item3_price.setText(bean2.getPrice()+"");
+            mTv_item3_price.setText("￥"+bean2.getPrice()+"0");
         }
     }
 }
