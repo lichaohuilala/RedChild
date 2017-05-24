@@ -10,8 +10,8 @@
         android:background="@mipmap/other_pay_header_pic2">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:srcCompat="@mipmap/courier_default_icon"
             android:id="@+id/iv_head_success"
             android:layout_centerVertical="true"

@@ -67,6 +67,13 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
                 String name = map.get("name");
                 String iconurl = map.get("iconurl");
                 Log.e("zzz",name+iconurl);
+                Intent intent = new Intent();
+                intent.putExtra("name",name);
+                intent.putExtra("iconurl",iconurl);
+                setResult(100,intent);
+                babyInfo.edit().putBoolean("isLogin",true).commit();
+                finish();
+
             }
 
             @Override

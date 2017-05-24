@@ -2,9 +2,12 @@ package com.bawei.redchild.me.me.View;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
+import com.bumptech.glide.Glide;
 
 /**
  * Effect :
@@ -14,6 +17,10 @@ import com.bawei.redchild.base.BaseFragment;
  */
 
 public class MeFragment extends BaseFragment {
+
+    private ImageView mHeadicon;
+    private TextView mName;
+
     /**
      * 绑定布局文件
      *
@@ -29,7 +36,19 @@ public class MeFragment extends BaseFragment {
      */
     @Override
     protected void initView() {
-
+        mHeadicon = (ImageView) getView().findViewById(R.id.iv_head_success);
+        mName = (TextView) getView().findViewById(R.id.tv_name_success);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String name = bundle.getString("name");
+            String iconurl = bundle.getString("iconurl");
+            if (name!=null){
+                mName.setText(name);
+            }
+            if (iconurl!=null){
+                Glide.with(getActivity()).load(iconurl).centerCrop().into(mHeadicon);
+            }
+        }
     }
 
     @Override

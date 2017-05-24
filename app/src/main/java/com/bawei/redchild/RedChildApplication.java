@@ -2,6 +2,7 @@ package com.bawei.redchild;
 
 import android.app.Application;
 
+import com.bawei.redchild.me.me.Utils.Utils;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
@@ -21,5 +22,6 @@ public class RedChildApplication extends Application {
     public void onCreate() {
         super.onCreate();
         UMShareAPI.get(this);
+        Utils.init(getApplicationContext());
     }
 }
