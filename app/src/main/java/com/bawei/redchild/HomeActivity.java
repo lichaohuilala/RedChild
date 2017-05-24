@@ -78,9 +78,16 @@ public class HomeActivity extends BaseActivity{
                     grouponFragment = new GrouponFragment();
                 }
                 HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,grouponFragment);
-                //提示
-                babyInfo.edit().clear().commit();
-                Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
+                /**
+                 * 测试专用：
+                 * 1. 清空sharedper
+                 * 2. 将登陆变量设置为false
+                 * 3. 默认跳转到第一个页面
+                 */
+//                babyInfo.edit().clear().commit();
+//                isLogin=false;
+//                rg.check(R.id.rb_home_home_show);
+//                Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -195,6 +202,11 @@ public class HomeActivity extends BaseActivity{
             //如果 比对成功代表 是登录页面 判断当前的值
             isLogin = babyInfo.getBoolean("isLogin", false);
             if(isLogin){
+                //跳转到设置页面
+                if(meFragment==null){
+                    meFragment = new MeFragment();
+                }
+                HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
             }else {
                 rg.check(R.id.rb_home_home_show);

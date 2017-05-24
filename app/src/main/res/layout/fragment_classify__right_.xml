@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.bawei.redchild.classify.fragment.Classify_Right_Fragment">
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:id="@+id/rv_right_fragment"
 

@@ -80,6 +80,7 @@ public class ClassifyFragment extends BaseFragment {
         rs = classify.getRs();
         mleft_adapter = new Re_Classify_Left_Adapter(getActivity(), rs);
         mRv_classify_left.setAdapter(mleft_adapter);
+
         mleft_adapter.setItemClickListener(new Re_Classify_Left_Adapter.MyItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
