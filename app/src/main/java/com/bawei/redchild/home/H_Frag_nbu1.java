@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bawei.redchild.MainActivity;
@@ -19,6 +20,7 @@ import com.bawei.redchild.home.bean.Home_frag1_bena_nbu;
 import com.bawei.redchild.home.h_url_f1.Gsons;
 import com.bawei.redchild.home.h_url_f1.Tianhenxian;
 import com.bawei.redchild.home.h_url_f1.Url;
+import com.bumptech.glide.Glide;
 import com.squareup.okhttp.Request;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -26,6 +28,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.List;
 
 import static android.R.attr.id;
+import static android.R.id.list;
 
 
 public class H_Frag_nbu1 extends Fragment {
@@ -55,10 +58,11 @@ public class H_Frag_nbu1 extends Fragment {
             public void onResponse(String response) {
                 Home_frag1_bena_nbu home_frag1_bena_nbu = Gsons.GetGsonfrom(response, Home_frag1_bena_nbu.class);
                 List<Home_frag1_bena_nbu.DataBean> data = home_frag1_bena_nbu.getData();
-                List<Home_frag1_bena_nbu.DataBean._$88001Bean.TagBean> tag = data.get(0).get_$88001().getTag();
-                H_recyview_adapter h_recyview_adapter = new H_recyview_adapter(tag, getActivity());
+                H_recyview_adapter h_recyview_adapter = new H_recyview_adapter(data, getActivity());
                 review_home_nbuxs.setAdapter(h_recyview_adapter);
                 review_home_nbuxs.addItemDecoration(new Tianhenxian(getActivity(),Tianhenxian.VERTICAL_LIST));
+
+
             }
         });
 
