@@ -16,6 +16,7 @@ import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
 import com.bawei.redchild.classify.adapter.Re_Classify_Left_Adapter;
 import com.bawei.redchild.classify.dao.Classify;
+import com.bawei.redchild.classify.dao.DividerGridItemDecoration;
 import com.bawei.redchild.classify.dao.Url;
 import com.bawei.redchild.classify.fragment.Classify_Right_Fragment;
 import com.google.gson.Gson;
@@ -48,7 +49,6 @@ public class ClassifyFragment extends BaseFragment {
             }
         }
     };
-
     private List<Classify.RsBean> rs;
     private Classify.RsBean rsBean;
     private  int position=0;
@@ -77,7 +77,8 @@ public class ClassifyFragment extends BaseFragment {
         rs = classify.getRs();
         mleft_adapter = new Re_Classify_Left_Adapter(getActivity(), rs);
         mRv_classify_left.setAdapter(mleft_adapter);
-
+        // 添加分隔线
+        mRv_classify_left.addItemDecoration( new DividerGridItemDecoration(getActivity()));
         mleft_adapter.setItemClickListener(new Re_Classify_Left_Adapter.MyItemClickListener() {
 
             private View childAt;
