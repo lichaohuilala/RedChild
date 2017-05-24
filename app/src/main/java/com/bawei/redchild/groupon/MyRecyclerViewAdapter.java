@@ -1,6 +1,7 @@
 package com.bawei.redchild.groupon;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -91,6 +92,7 @@ View view=null;
 
                     }
                 });
+
                 break;
             case 1:
                 final ViewHolder2 vh2 = (ViewHolder2) holder;
@@ -170,7 +172,7 @@ View view=null;
             Glide.with(context).load(bean.getImgUrl()).into(mImageView);
             mTextView.setText(bean.getItemName());
             mTextView2.setText(bean.getItemDesc());
-            mTextView3.setText(bean.getPrice()+"");
+            mTextView3.setText("￥"+bean.getPrice()+"0");
         }
     }
 
@@ -186,11 +188,20 @@ View view=null;
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
 
             View view = View.inflate(context, R.layout.item_item, null);
             ImageView imageView= (ImageView) view.findViewById(R.id.item_item_image);
             Glide.with(context).load(list.get(position).getImgUrl()).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,DetailsActivity.class);
+                    String url = list.get(position).getTargetUrl();
+                    intent.putExtra("url",url);
+                    context.startActivity(intent);
+                }
+            });
             container.addView(view);
             return view;
         }
@@ -254,7 +265,7 @@ View view=null;
                 Glide.with(context).load(x.getImgUrl()).into(mIv_logo);
                 mTv_name.setText(x.getItemName());
                 mTv_desc.setText(x.getItemDesc());
-                mTv_price.setText(x.getPrice()+"");
+                mTv_price.setText("￥"+x.getPrice()+"0");
             }
         }
     }
