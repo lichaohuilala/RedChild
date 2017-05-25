@@ -1,23 +1,14 @@
 package com.bawei.redchild;
-
 import android.app.Application;
-
-
-import com.iflytek.cloud.SpeechUtility;
-
-
 import com.bawei.redchild.me.me.Utils.Utils;
+import com.iflytek.cloud.SpeechUtility;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
-
-
 /**
- * Effect : Application 程序入口
- * <p>
- * Created by Administrator
- * Time by 2017/5/17 0017
- */
-
+*日期:2017/5/25 
+ * 时间:8:29
+*类描述：
+*/
 public class RedChildApplication extends Application {
     {
         PlatformConfig.setQQZone("1106106081", "ETz0UvZADX01YwuH");

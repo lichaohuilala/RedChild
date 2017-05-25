@@ -41,6 +41,6 @@ public class H_frag_base extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return list.size();
+        return 5;
     }
 }
