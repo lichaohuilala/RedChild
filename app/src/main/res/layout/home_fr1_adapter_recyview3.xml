@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="wrap_content">
+<ImageView
+    android:id="@+id/img3_fr1_adap_review_buju3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+<ImageView
+    android:id="@+id/img4_fr1_adap_review_buju3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv1_fr1_adap_review_buju3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/tv2_fr1_adap_review_buju3"
+            android:textSize="18sp"
+            android:text="￥95.00"
+            android:layout_centerVertical="true"
+            android:textColor="#ff0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_search_normal_bg"
+            >
+            <TextView
+                android:id="@+id/tv3_fr1_adap_review_buju3"
+                android:textSize="15sp"
+                android:text="2人团"
+                android:textColor="#ff0000"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv4_fr1_adap_review_buju3"
+                android:textSize="15sp"
+                android:text="立即开团"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:background="#ff0000"
+                android:textColor="#fff"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

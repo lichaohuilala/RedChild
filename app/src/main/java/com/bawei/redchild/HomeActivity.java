@@ -2,6 +2,7 @@ package com.bawei.redchild;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -11,8 +12,8 @@ import com.bawei.redchild.base.BaseActivity;
 import com.bawei.redchild.classify.ClassifyFragment;
 import com.bawei.redchild.groupon.GrouponFragment;
 import com.bawei.redchild.home.HomeFragment;
-import com.bawei.redchild.me.me.Login_act;
-import com.bawei.redchild.me.me.MeFragment;
+import com.bawei.redchild.me.me.View.Login_act;
+import com.bawei.redchild.me.me.View.MeFragment;
 import com.bawei.redchild.shoppingCart.ShoppingCartFragment;
 
 public class HomeActivity extends BaseActivity{
@@ -129,8 +130,7 @@ public class HomeActivity extends BaseActivity{
                                     meFragment = new MeFragment();
                                 }
                                 HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,meFragment);
-                                //提示
-                                Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
+
                             }else{
                                 startActivityForResult(new Intent(HomeActivity.this,Login_act.class),REQUEST_CODE);
                             }
@@ -198,6 +198,18 @@ public class HomeActivity extends BaseActivity{
             }else {
                 rg.check(R.id.rb_home_home_show);
             }
+        }
+        if (resultCode==100){
+            String name = data.getStringExtra("name");
+            String iconurl = data.getStringExtra("iconurl");
+            Bundle bundle = new Bundle();
+            bundle.putString("name",name);
+            bundle.putString("iconurl",iconurl);
+            if(meFragment==null){
+                meFragment = new MeFragment();
+            }
+            meFragment.setArguments(bundle);
+            rg.check(R.id.rb_home_me_show);
         }
     }
 }

@@ -6,7 +6,7 @@
     android:id="@+id/activity_register_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bawei.redchild.me.me.Login_act">
+    tools:context="com.bawei.redchild.me.me.View.Login_act">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
