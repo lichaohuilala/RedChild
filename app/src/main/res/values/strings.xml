@@ -1,7 +1,20 @@
 <resources>
     <string name="app_name">红孩儿</string>
     <string name="homesearchbarhint">商品/店铺</string>
+
+
+    <string name="shop_shop">购物车</string>
+    <string name="shop_compile">编辑</string>
+    <string name="shop_text">测试</string>
+    <string name="shop_close">去结算</string>
+    <string name="shop_tatal">合计：</string>
+    <string name="shop_freight">免运费</string>
+    <string name="shop_all">全选</string>
+    <string name="shop_lingjuan">领劵</string>
+    <string name="shop_select">(已选：1)</string>
+
     <string name="search_hint">搜索商品或店铺</string>
     <string name="search_tab">搜索</string>
     <string name="app_id">583674b9</string>
+
 </resources>

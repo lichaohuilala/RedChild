@@ -162,6 +162,9 @@
     <color name="color_gray_999999">#ff999999</color>
     <color name="color_white_f7f7f7">#fff7f7f7</color>
 
+    <color name="pub_color_fourteen">#fff8f8f8</color>
+    <color name="pub_color_fourteen2">#F2f2f2</color>
+
     <color name="default_text">#ff454545</color>
     <color name="subscribe_item_drag_stroke">#ffd2d2d2</color>
     <color name="subscribe_item_drag_bg">#fff5f5f5</color>
