@@ -9,13 +9,13 @@
         android:layout_height="200dp"
         android:background="@mipmap/other_pay_header_pic2">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/courier_default_icon"
-            android:id="@+id/iv_head_success"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srcCompat="@mipmap/courier_default_icon"-->
+            <!--android:id="@+id/iv_head_success"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentStart="true"/>-->
 
         <TextView
             android:text="13936195578"

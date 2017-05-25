@@ -26,13 +26,15 @@ public class DataDao extends AbstractDao<Data, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property ShopName = new Property(1, String.class, "ShopName", false, "SHOP_NAME");
         public final static Property Freight = new Property(2, String.class, "freight", false, "FREIGHT");
-        public final static Property Image = new Property(3, String.class, "image", false, "IMAGE");
-        public final static Property Name = new Property(4, String.class, "name", false, "NAME");
-        public final static Property Color = new Property(5, String.class, "color", false, "COLOR");
-        public final static Property Price = new Property(6, String.class, "price", false, "PRICE");
-        public final static Property Reduction = new Property(7, String.class, "reduction", false, "REDUCTION");
-        public final static Property Status = new Property(8, String.class, "status", false, "STATUS");
+        public final static Property Status = new Property(3, String.class, "status", false, "STATUS");
+        public final static Property Image = new Property(4, String.class, "image", false, "IMAGE");
+        public final static Property Name = new Property(5, String.class, "name", false, "NAME");
+        public final static Property Color = new Property(6, String.class, "color", false, "COLOR");
+        public final static Property Price = new Property(7, Integer.class, "price", false, "PRICE");
+        public final static Property Reduction = new Property(8, String.class, "reduction", false, "REDUCTION");
         public final static Property Number = new Property(9, String.class, "number", false, "NUMBER");
+        public final static Property Zhuangtai = new Property(10, Boolean.class, "zhuangtai", false, "ZHUANGTAI");
+        public final static Property IsTop = new Property(11, Boolean.class, "isTop", false, "IS_TOP");
     };
 
 
@@ -51,13 +53,15 @@ public class DataDao extends AbstractDao<Data, Long> {
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"SHOP_NAME\" TEXT NOT NULL ," + // 1: ShopName
                 "\"FREIGHT\" TEXT," + // 2: freight
-                "\"IMAGE\" TEXT," + // 3: image
-                "\"NAME\" TEXT," + // 4: name
-                "\"COLOR\" TEXT," + // 5: color
-                "\"PRICE\" TEXT," + // 6: price
-                "\"REDUCTION\" TEXT," + // 7: reduction
-                "\"STATUS\" TEXT," + // 8: status
-                "\"NUMBER\" TEXT);"); // 9: number
+                "\"STATUS\" TEXT," + // 3: status
+                "\"IMAGE\" TEXT," + // 4: image
+                "\"NAME\" TEXT," + // 5: name
+                "\"COLOR\" TEXT," + // 6: color
+                "\"PRICE\" INTEGER," + // 7: price
+                "\"REDUCTION\" TEXT," + // 8: reduction
+                "\"NUMBER\" TEXT," + // 9: number
+                "\"ZHUANGTAI\" INTEGER," + // 10: zhuangtai
+                "\"IS_TOP\" INTEGER);"); // 11: isTop
     }
 
     /** Drops the underlying database table. */
@@ -82,39 +86,49 @@ public class DataDao extends AbstractDao<Data, Long> {
             stmt.bindString(3, freight);
         }
  
+        String status = entity.getStatus();
+        if (status != null) {
+            stmt.bindString(4, status);
+        }
+ 
         String image = entity.getImage();
         if (image != null) {
-            stmt.bindString(4, image);
+            stmt.bindString(5, image);
         }
  
         String name = entity.getName();
         if (name != null) {
-            stmt.bindString(5, name);
+            stmt.bindString(6, name);
         }
  
         String color = entity.getColor();
         if (color != null) {
-            stmt.bindString(6, color);
+            stmt.bindString(7, color);
         }
  
-        String price = entity.getPrice();
+        Integer price = entity.getPrice();
         if (price != null) {
-            stmt.bindString(7, price);
+            stmt.bindLong(8, price);
         }
  
         String reduction = entity.getReduction();
         if (reduction != null) {
-            stmt.bindString(8, reduction);
-        }
- 
-        String status = entity.getStatus();
-        if (status != null) {
-            stmt.bindString(9, status);
+            stmt.bindString(9, reduction);
         }
  
         String number = entity.getNumber();
         if (number != null) {
             stmt.bindString(10, number);
+        }
+ 
+        Boolean zhuangtai = entity.getZhuangtai();
+        if (zhuangtai != null) {
+            stmt.bindLong(11, zhuangtai ? 1L: 0L);
+        }
+ 
+        Boolean isTop = entity.getIsTop();
+        if (isTop != null) {
+            stmt.bindLong(12, isTop ? 1L: 0L);
         }
     }
 
@@ -131,13 +145,15 @@ public class DataDao extends AbstractDao<Data, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // ShopName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // freight
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // image
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // name
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // color
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // price
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // reduction
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // status
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // number
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // status
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // image
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // name
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // color
+            cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7), // price
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // reduction
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // number
+            cursor.isNull(offset + 10) ? null : cursor.getShort(offset + 10) != 0, // zhuangtai
+            cursor.isNull(offset + 11) ? null : cursor.getShort(offset + 11) != 0 // isTop
         );
         return entity;
     }
@@ -148,13 +164,15 @@ public class DataDao extends AbstractDao<Data, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setShopName(cursor.getString(offset + 1));
         entity.setFreight(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setImage(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setColor(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setPrice(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setReduction(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setStatus(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setStatus(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setImage(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setColor(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setPrice(cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7));
+        entity.setReduction(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
         entity.setNumber(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setZhuangtai(cursor.isNull(offset + 10) ? null : cursor.getShort(offset + 10) != 0);
+        entity.setIsTop(cursor.isNull(offset + 11) ? null : cursor.getShort(offset + 11) != 0);
      }
     
     /** @inheritdoc */

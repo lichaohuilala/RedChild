@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+                main {
+                       java.srcDirs = ['src/main/java', 'src/main/java-gen']
+                 }
+         }
+
 }
 
 dependencies {
@@ -35,4 +42,5 @@ dependencies {
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'com.orhanobut:logger:1.15'
     testCompile 'junit:junit:4.12'
+    compile project(':greendaolib')
 }

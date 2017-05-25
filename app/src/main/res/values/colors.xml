@@ -155,4 +155,6 @@
     <color name="add_cart_disabled_text_color">#ff909090</color>
     <color name="color_gray_999999">#ff999999</color>
     <color name="color_white_f7f7f7">#fff7f7f7</color>
+    <color name="pub_color_fourteen">#fff8f8f8</color>
+    <color name="pub_color_fourteen2">#F2f2f2</color>
 </resources>
