@@ -28,6 +28,9 @@ public class RedChildApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SpeechUtility.createUtility(this, "appid=" + getString(R.string.app_id));
+        UMShareAPI.get(this);
+        Utils.init(getApplicationContext());
         setupDatabase();
     }
     private void setupDatabase() {
@@ -49,8 +52,5 @@ public class RedChildApplication extends Application {
 
     public SQLiteDatabase getDb() {
         return db;
-        SpeechUtility.createUtility(this, "appid=" + getString(R.string.app_id));
-        UMShareAPI.get(this);
-        Utils.init(getApplicationContext());
     }
 }
