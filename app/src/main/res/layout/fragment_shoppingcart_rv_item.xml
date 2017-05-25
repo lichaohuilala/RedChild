@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="15dp"
+    android:background="@color/pub_color_fourteen2"/>
+<RelativeLayout
+    android:id="@+id/fragment_sc_item_rl"
+    android:background="#ffffff"
+   android:layout_width="match_parent"
+    android:layout_height="55dp">
+
+    <CheckBox
+        android:id="@+id/fragment_sc_item_title_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@null"
+        android:button="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:drawableLeft="@drawable/shopping_cart_checkbox"
+        />
+
+    <TextView
+        android:id="@+id/fragment_sc_item_title"
+        style="@style/shop_fragment_warp"
+        android:text="@string/shop_text"
+        android:textSize="22sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"
+        android:layout_alignLeft="@id/fragment_sc_item_title_cb"/>
+
+
+    <TextView
+        style="@style/shop_fragment_warp"
+        android:text="@string/shop_text"
+        android:textSize="15sp"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/fragment_sc_item_postage"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/fragment_sc_item_postage"
+        style="@style/shop_fragment_warp"
+        android:text="@string/shop_lingjuan"
+        android:textSize="15sp"
+        android:textColor="@color/lime"
+        android:background="@drawable/shape_shopping_lingjuan"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"/>
+</RelativeLayout>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/fragment_sc_item_rv"-->
+        <!--style="@style/shop_fragment_macth"-->
+        <!--android:layout_below="@+id/fragment_sc_item_rl"-->
+        <!--&gt;</android.support.v7.widget.RecyclerView>-->
+
+
+
+
+
+</LinearLayout>

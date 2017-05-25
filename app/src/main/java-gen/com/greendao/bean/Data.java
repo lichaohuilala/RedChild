@@ -10,13 +10,15 @@ public class Data {
     /** Not-null value. */
     private String ShopName;
     private String freight;
+    private String status;
     private String image;
     private String name;
     private String color;
-    private String price;
+    private Integer price;
     private String reduction;
-    private String status;
     private String number;
+    private Boolean zhuangtai;
+    private Boolean isTop;
 
     public Data() {
     }
@@ -25,17 +27,19 @@ public class Data {
         this.id = id;
     }
 
-    public Data(Long id, String ShopName, String freight, String image, String name, String color, String price, String reduction, String status, String number) {
+    public Data(Long id, String ShopName, String freight, String status, String image, String name, String color, Integer price, String reduction, String number, Boolean zhuangtai, Boolean isTop) {
         this.id = id;
         this.ShopName = ShopName;
         this.freight = freight;
+        this.status = status;
         this.image = image;
         this.name = name;
         this.color = color;
         this.price = price;
         this.reduction = reduction;
-        this.status = status;
         this.number = number;
+        this.zhuangtai = zhuangtai;
+        this.isTop = isTop;
     }
 
     public Long getId() {
@@ -64,6 +68,14 @@ public class Data {
         this.freight = freight;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getImage() {
         return image;
     }
@@ -88,11 +100,11 @@ public class Data {
         this.color = color;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -104,20 +116,28 @@ public class Data {
         this.reduction = reduction;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Boolean getZhuangtai() {
+        return zhuangtai;
+    }
+
+    public void setZhuangtai(Boolean zhuangtai) {
+        this.zhuangtai = zhuangtai;
+    }
+
+    public Boolean getIsTop() {
+        return isTop;
+    }
+
+    public void setIsTop(Boolean isTop) {
+        this.isTop = isTop;
     }
 
 }
