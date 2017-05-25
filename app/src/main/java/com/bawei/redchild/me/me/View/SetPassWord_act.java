@@ -1,6 +1,7 @@
 package com.bawei.redchild.me.me.View;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,13 +16,13 @@ import android.widget.Toast;
 
 import com.bawei.redchild.R;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SetPassWord_act extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,6 +35,9 @@ public class SetPassWord_act extends AppCompatActivity implements View.OnClickLi
     private EditText et_setpass_setpass;
     private Button but_submit_setpass;
     private int count=60;
+    private SharedPreferences babyInfo;
+    private String mPhone;
+    private Timer mTimer;
         private Handler handler=new Handler(){
                 @Override
                 public void handleMessage(Message msg) {
@@ -64,7 +68,8 @@ public class SetPassWord_act extends AppCompatActivity implements View.OnClickLi
                                     Toast.makeText(SetPassWord_act.this, "提交验证码成功",
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SetPassWord_act.this,Success_act.class);
-                                    EventBus.getDefault().postSticky(mPhone);
+                                    babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
+                                    babyInfo.edit().putString("name",mPhone);
                                     startActivity(intent);
                                 }
                                 else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
@@ -80,8 +85,7 @@ public class SetPassWord_act extends AppCompatActivity implements View.OnClickLi
                     }
                 }
             };
-    private String mPhone;
-    private Timer mTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

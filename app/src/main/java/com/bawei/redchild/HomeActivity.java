@@ -2,7 +2,6 @@ package com.bawei.redchild;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -78,9 +77,6 @@ public class HomeActivity extends BaseActivity{
                     grouponFragment = new GrouponFragment();
                 }
                 HomeActivity.super.replaceFragment(R.id.rl_home_show_fragment,grouponFragment);
-                //提示
-                babyInfo.edit().clear().commit();
-                Toast.makeText(HomeActivity.this, "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -195,21 +191,10 @@ public class HomeActivity extends BaseActivity{
             isLogin = babyInfo.getBoolean("isLogin", false);
             if(isLogin){
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                rg.check(R.id.rb_home_me_show);
             }else {
                 rg.check(R.id.rb_home_home_show);
             }
-        }
-        if (resultCode==100){
-            String name = data.getStringExtra("name");
-            String iconurl = data.getStringExtra("iconurl");
-            Bundle bundle = new Bundle();
-            bundle.putString("name",name);
-            bundle.putString("iconurl",iconurl);
-            if(meFragment==null){
-                meFragment = new MeFragment();
-            }
-            meFragment.setArguments(bundle);
-            rg.check(R.id.rb_home_me_show);
         }
     }
 }

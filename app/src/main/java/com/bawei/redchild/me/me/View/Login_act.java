@@ -68,10 +68,8 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
                 String name = map.get("name");
                 String iconurl = map.get("iconurl");
                 Log.e("zzz",name+iconurl);
-                Intent intent = new Intent();
-                intent.putExtra("name",name);
-                intent.putExtra("iconurl",iconurl);
-                setResult(100,intent);
+                babyInfo.edit().putString("name",name).commit();
+                babyInfo.edit().putString("icon",iconurl).commit();
                 babyInfo.edit().putBoolean("isLogin",true).commit();
                 finish();
 
@@ -92,7 +90,6 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     private void initView() {
 
         babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
-
         tb_login = (Toolbar) findViewById(R.id.tb_login);
         tb_login.setNavigationIcon(R.mipmap.btn_back);
         tb_login.setNavigationOnClickListener(new View.OnClickListener() {
@@ -173,8 +170,15 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.but_login_login:
-                babyInfo.edit().putBoolean("isLogin",true).commit();
-                finish();
+                String name = et_name_login.getText().toString().trim();
+                String pass = et_pass_login.getText().toString().trim();
+                if (TextUtils.isEmpty(name)||TextUtils.isEmpty(pass)){
+                    Toast.makeText(Login_act.this,"请补全信息",Toast.LENGTH_SHORT).show();
+                }else{
+                    babyInfo.edit().putBoolean("isLogin",true).commit();
+                    babyInfo.edit().putString("name",name).commit();
+                    finish();
+                }
                 break;
             case R.id.but_register_login:
                 Intent intent = new Intent(Login_act.this, Register_act.class);
