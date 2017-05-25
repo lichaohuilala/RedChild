@@ -66,9 +66,7 @@ public class Re_Classify_Left_Adapter   extends RecyclerView.Adapter<Re_Classify
             }
         }
     }
-
     public interface MyItemClickListener {
-
         void onItemClick(View view, int position);
     }
     public void setItemClickListener(MyItemClickListener myItemClickListener) {
