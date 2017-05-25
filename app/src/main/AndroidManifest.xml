@@ -100,6 +100,7 @@
         </activity>
         <activity android:name=".me.me.View.Success_act">
         </activity>
+        <activity android:name=".home.home_activity.HomeActivity_search"></activity>
     </application>
 
 </manifest>
