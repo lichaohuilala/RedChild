@@ -22,8 +22,6 @@ import java.util.TimerTask;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SetPassWord_act extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar tb_setpass;
@@ -69,7 +67,7 @@ public class SetPassWord_act extends AppCompatActivity implements View.OnClickLi
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SetPassWord_act.this,Success_act.class);
                                     babyInfo = getSharedPreferences("babyInfo", MODE_PRIVATE);
-                                    babyInfo.edit().putString("name",mPhone);
+                                    babyInfo.edit().putString("name",mPhone).commit();
                                     startActivity(intent);
                                 }
                                 else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
